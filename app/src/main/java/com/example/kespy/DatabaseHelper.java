@@ -8,7 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "SpyGameDB";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String TABLE_CATEGORIES = "categories";
     private static final String TABLE_WORDS = "words";
@@ -55,21 +55,63 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         insertCategory(db, 3, "Food");
 
         String[][] fruits = {
-                {"আম", "Mango"}, {"কাঁঠাল", "Jackfruit"}, {"লিচু", "Lychee"}, {"পেয়ারা", "Guava"}, {"তরমুজ", "Watermelon"}, {"জামরুল", "Water Apple"}, {"বরই", "Jujube"}, {"কলা", "Banana"}, {"আনারস", "Pineapple"}, {"পেঁপে", "Papaya"}, {"কমলা", "Orange"}, {"আপেল", "Apple"}, {"আঙুর", "Grapes"}, {"ডালিম", "Pomegranate"}, {"নারকেল", "Coconut"}, {"লেবু", "Lemon"}, {"মাল্টা", "Malta Orange"}, {"বাতাবি লেবু", "Pomelo"}, {"আমড়া", "Hog Plum"}, {"জাম", "Java Plum"}, {"বেল", "Wood Apple"}, {"কদবেল", "Elephant Apple"}, {"সফেদা", "Sapodilla"}, {"তাল", "Palmyra Fruit"}, {"খেজুর", "Date"}, {"জলপাই", "Olive"}, {"কামরাঙা", "Star Fruit"}, {"আতা", "Custard Apple"}, {"শরিফা", "Sugar Apple"}, {"ড্রাগন ফল", "Dragon Fruit"}, {"স্ট্রবেরি", "Strawberry"}, {"চেরি", "Cherry"}, {"নাশপাতি", "Pear"}, {"বাঙ্গি", "Muskmelon"}, {"ডাব", "Green Coconut"}, {"কুল", "Indian Jujube"}, {"বিলিম্বি", "Bilimbi"}, {"লটকন", "Burmese Grape"}, {"করমচা", "Bengal Currant"}, {"ফলসা", "Phalsa"}, {"তেঁতুল", "Tamarind"}, {"কেওড়া ফল", "Keora Fruit"}, {"আমলকি", "Indian Gooseberry"}, {"ডেউয়া", "Monkey Jack"}, {"কাউ ফল", "Cowa Fruit"}, {"গাব", "Indian Persimmon"}, {"বেতফল", "Rattan Fruit"}, {"প্যাশন ফল", "Passion Fruit"}, {"কিউই", "Kiwi"}, {"অ্যাভোকাডো", "Avocado"}
+                {"আপেল", "Apple"}, {"কলা", "Banana"}, {"আম", "Mango"}, {"কমলা", "Orange"},
+                {"আঙ্গুর", "Grapes"}, {"তরমুজ", "Watermelon"}, {"আনারস", "Pineapple"},
+                {"পেঁপে", "Papaya"}, {"পেয়ারা", "Guava"}, {"কাঁঠাল", "Jackfruit"},
+                {"লিচু", "Litchi"}, {"ডালিম", "Pomegranate"}, {"নারকেল", "Coconut"},
+                {"লেবু", "Lemon"}, {"কালোজাম", "Blackberry"}, {"বরই", "Plum"},
+                {"ড্রাগন ফল", "Dragon Fruit"}, {"খেজুর", "Date"}, {"তেঁতুল", "Tamarind"},
+                {"জামরুল", "Star Apple"}, {"কদবেল", "Wood Apple"}, {"আতা", "Custard Apple"},
+                {"বাঙ্গি", "Melon"}, {"জলপাই", "Olive"}, {"সফেদা", "Sapodilla"},
+                {"জাম্বুরা", "Grapefruit"}, {"আমলকী", "Gooseberry"}, {"কামরাঙ্গা", "Starfruit"},
+                {"আখ", "Sugar Cane"}, {"বাতাবি লেবু", "Pomelo"}, {"তাল", "Palmyra Palm"},
+                {"বেল", "Bael"}, {"আমড়া", "Hog Plum"}, {"চালতা", "Elephant Apple"},
+                {"জাম", "Java Plum"}, {"মাল্টা", "Sweet Orange"}, {"কিশমিশ", "Raisin"},
+                {"চিনাবাদাম", "Peanut"}, {"টমেটো", "Tomato"}, {"শসা", "Cucumber"},
+                {"মিষ্টি কুমড়া", "Pumpkin"}
         };
         for (String[] fruit : fruits) {
             insertWord(db, fruit[0], fruit[1], 1);
         }
 
         String[][] animals = {
-                {"বাঘ", "Tiger"}, {"সিংহ", "Lion"}, {"হাতি", "Elephant"}, {"গরু", "Cow"}, {"ছাগল", "Goat"}, {"ভেড়া", "Sheep"}, {"মহিষ", "Buffalo"}, {"ঘোড়া", "Horse"}, {"গাধা", "Donkey"}, {"কুকুর", "Dog"}, {"বিড়াল", "Cat"}, {"বানর", "Monkey"}, {"শিয়াল", "Fox"}, {"হরিণ", "Deer"}, {"খরগোশ", "Rabbit"}, {"ভালুক", "Bear"}, {"নেকড়ে", "Wolf"}, {"জেব্রা", "Zebra"}, {"জিরাফ", "Giraffe"}, {"গণ্ডার", "Rhinoceros"}, {"জলহস্তী", "Hippopotamus"}, {"উট", "Camel"}, {"শূকর", "Pig"}, {"কাঠবিড়ালি", "Squirrel"}, {"ইঁদুর", "Rat"}, {"বেজি", "Mongoose"}, {"সজারু", "Porcupine"}, {"বনবিড়াল", "Wild Cat"}, {"চিতা", "Leopard"}, {"চিতাবাঘ", "Cheetah"}, {"কুমির", "Crocodile"}, {"সাপ", "Snake"}, {"টিকটিকি", "Lizard"}, {"ব্যাঙ", "Frog"}, {"কচ্ছপ", "Turtle"}, {"গুইসাপ", "Monitor Lizard"}, {"ডলফিন", "Dolphin"}, {"তিমি", "Whale"}, {"হাঙর", "Shark"}, {"অক্টোপাস", "Octopus"}, {"কাঁকড়া", "Crab"}, {"চিংড়ি", "Shrimp"}, {"বাদুড়", "Bat"}, {"কেঁচো", "Earthworm"}, {"প্রজাপতি", "Butterfly"}, {"মৌমাছি", "Bee"}, {"মশা", "Mosquito"}, {"মাছি", "Fly"}, {"তেলাপোকা", "Cockroach"}, {"পিঁপড়া", "Ant"}
+                {"সিংহ", "Lion"}, {"বাঘ", "Tiger"}, {"হাতি", "Elephant"}, {"ঘোড়া", "Horse"},
+                {"কুকুর", "Dog"}, {"বিড়াল", "Cat"}, {"গরু", "Cow"}, {"বানর", "Monkey"},
+                {"হরিণ", "Deer"}, {"খরগোশ", "Rabbit"}, {"উট", "Camel"}, {"শিয়াল", "Fox"},
+                {"জেব্রা", "Zebra"}, {"জিরাফ", "Giraffe"}, {"গণ্ডার", "Rhinoceros"},
+                {"জলহস্তী", "Hippopotamus"}, {"কুমির", "Crocodile"}, {"সাপ", "Snake"},
+                {"ব্যাঙ", "Frog"}, {"কচ্ছপ", "Turtle"}, {"ছাগল", "Goat"}, {"ভেড়া", "Sheep"},
+                {"গাধা", "Donkey"}, {"শূকর", "Pig"}, {"ইঁদুর", "Mouse"}, {"মাছ", "Fish"},
+                {"মহিষ", "Buffalo"}, {"তিমি", "Whale"}, {"অক্টোপাস", "Octopus"}, {"কাক", "Crow"},
+                {"কবুতর", "Pigeon"}, {"হাঁস", "Duck"}, {"মুরগি", "Hen"}, {"বক", "Heron"},
+                {"শকুন", "Vulture"}, {"টিকটিকি", "Lizard"}, {"প্রজাপতি", "Butterfly"},
+                {"মৌমাছি", "Bee"}, {"পিঁপড়া", "Ant"}, {"মশা", "Mosquito"}, {"মাছি", "Fly"},
+                {"মাকড়সা", "Spider"}, {"তেলাপোকা", "Cockroach"}, {"জোনাকি", "Firefly"},
+                {"কেঁচো", "Earthworm"}, {"চিংড়ি", "Prawn"}, {"কাঁকড়া", "Crab"}
         };
         for (String[] animal : animals) {
             insertWord(db, animal[0], animal[1], 2);
         }
 
         String[][] foods = {
-                {"কাচ্চি বিরিয়ানি", "Kacchi Biryani"}, {"তেহারি", "Tehari"}, {"পোলাও", "Pulao"}, {"খিচুড়ি", "Khichuri"}, {"সাদা ভাত", "Steamed Rice"}, {"পান্তা ভাত", "Panta Bhat"}, {"ভুনা খিচুড়ি", "Bhuna Khichuri"}, {"মোরগ পোলাও", "Chicken Pulao"}, {"ফুচকা", "Fuchka"}, {"চটপটি", "Chotpoti"}, {"সিঙ্গারা", "Singara"}, {"সমুচা", "Samosa"}, {"পুরি", "Puri"}, {"পরোটা", "Paratha"}, {"রুটি", "Roti"}, {"নান", "Naan"}, {"হালিম", "Haleem"}, {"কাবাব", "Kebab"}, {"শিক কাবাব", "Seekh Kebab"}, {"চিকেন রোস্ট", "Chicken Roast"}, {"গরুর মাংস", "Beef Curry"}, {"খাসির মাংস", "Mutton Curry"}, {"মুরগির ঝোল", "Chicken Curry"}, {"ইলিশ ভাজা", "Fried Hilsa"}, {"সরিষা ইলিশ", "Hilsa in Mustard"}, {"মাছের ঝোল", "Fish Curry"}, {"ডাল", "Lentil Soup"}, {"আলু ভর্তা", "Mashed Potato"}, {"বেগুন ভর্তা", "Mashed Eggplant"}, {"শুঁটকি ভর্তা", "Mashed Dried Fish"}, {"ডিম ভাজি", "Fried Egg"}, {"ডিমের ঝোল", "Egg Curry"}, {"আলু ভাজি", "Fried Potato"}, {"বেগুনি", "Beguni"}, {"পেঁয়াজু", "Peyaju"}, {"মুড়ি", "Puffed Rice"}, {"ঝালমুড়ি", "Jhalmuri"}, {"চানাচুর", "Chanachur"}, {"চা", "Tea"}, {"দুধ চা", "Milk Tea"}, {"লাচ্ছি", "Lassi"}, {"দই", "Yogurt"}, {"রসগোল্লা", "Roshogolla"}, {"মিষ্টি দই", "Sweet Yogurt"}, {"চমচম", "Chomchom"}, {"সন্দেশ", "Sandesh"}, {"জিলাপি", "Jalebi"}, {"পায়েস", "Payesh"}, {"সেমাই", "Semai"}, {"পিঠা", "Pitha"}
+                {"বিরিয়ানি", "Biryani"}, {"ফুচকা", "Fuchka"}, {"সিঙ্গারা", "Singara"},
+                {"ফ্রাইড রাইস", "Fried Rice"}, {"আইসক্রিম", "Ice Cream"}, {"চকোলেট", "Chocolate"},
+                {"সন্দেশ", "Sandesh"}, {"পাস্তা", "Pasta"}, {"তেহারি", "Tehari"},
+                {"খিচুড়ি", "Khichuri"}, {"পোলাও", "Polao"}, {"হালিম", "Haleem"},
+                {"চটপটি", "Chotpoti"}, {"জিলাপি", "Jilapi"}, {"দই", "Doi"}, {"নান", "Naan"},
+                {"নুডলস", "Noodles"}, {"সুপ", "Soup"}, {"সালাদ", "Salad"}, {"কেক", "Cake"},
+                {"বিস্কুট", "Biscuit"}, {"পাউরুটি", "Bread"}, {"মধু", "Honey"}, {"রোস্ট", "Roast"},
+                {"ভুনা খিচুড়ি", "Bhuna Khichuri"}, {"কাচ্চি বিরিয়ানি", "Kacchi Biryani"},
+                {"মোরগ পোলাও", "Morog Polao"}, {"শুটকি", "Shutki"}, {"ভাত", "Rice"},
+                {"পান্তা ভাত", "Panta Bhat"}, {"পিঠা", "Pitha"}, {"ভাপা পিঠা", "Bhapa Pitha"},
+                {"পায়েস", "Payesh"}, {"ফিরনি", "Firni"}, {"সেমাই", "Semai"}, {"হালুয়া", "Halua"},
+                {"গাজরের হালুয়া", "Gajor Halua"}, {"মিষ্টি দই", "Mishti Doi"}, {"বোরহানি", "Borhani"},
+                {"লাচ্ছি", "Lassi"}, {"রসমালাই", "Rasmalai"}, {"ঝালমুড়ি", "Jhalmuri"},
+                {"চানাচুর", "Chanachur"}, {"পুরি", "Puri"}, {"রুটি", "Roti"}, {"কফি", "Coffee"},
+                {"চা", "Tea"}, {"দুধ চা", "Milk Tea"}, {"লেবুর শরবত", "Lemonade"},
+                {"শরবত", "Sharbat"}, {"পাপড়", "Papad"}, {"ডিম ভুনা", "Dim Bhuna"},
+                {"নিহারি", "Nehari"}, {"পায়া", "Paya"}, {"নারকেল নাড়ু", "Naru"},
+                {"জর্দা", "Zarda"}, {"আমসত্ত্ব", "Amshotto"}, {"লাল চা", "Red Tea"}, {"চপ", "Chop"}
         };
         for (String[] food : foods) {
             insertWord(db, food[0], food[1], 3);

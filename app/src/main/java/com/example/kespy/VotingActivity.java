@@ -23,6 +23,7 @@ public class VotingActivity extends AppCompatActivity {
     ArrayList<String> playerRoles;
     ArrayList<String> playerNames;
     String secretWord;
+    String actualSpyName;
 
     int[] voteCounts;
     int currentVotingIndex = 0;
@@ -47,11 +48,11 @@ public class VotingActivity extends AppCompatActivity {
         playerRoles = getIntent().getStringArrayListExtra("ROLES");
         playerNames = getIntent().getStringArrayListExtra("PLAYER_NAMES");
         secretWord = getIntent().getStringExtra("SECRET_WORD");
+        actualSpyName = getIntent().getStringExtra("ACTUAL_SPY_NAME");
 
         totalPlayers = playerNames.size();
         voteCounts = new int[totalPlayers];
 
-        // রেডিও বাটন তৈরি করা
         for (int i = 0; i < totalPlayers; i++) {
             RadioButton rb = new RadioButton(this);
             rb.setText(playerNames.get(i));
@@ -68,7 +69,7 @@ public class VotingActivity extends AppCompatActivity {
             public void onClick(View v) {
                 int selectedId = rgSuspects.getCheckedRadioButtonId();
                 if (selectedId == -1) {
-                    Toast.makeText(VotingActivity.this, "কাকে সন্দেহ হয় সিলেক্ট করো!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(VotingActivity.this, "কাকে সন্দেহ হয় সিলেক্ট করো!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -100,7 +101,7 @@ public class VotingActivity extends AppCompatActivity {
 
     private void updateVotingScreen() {
         tvVoteTitle.setText(playerNames.get(currentVotingIndex) + "'s Turn!");
-        rgSuspects.clearCheck(); // আগের ভোট মুছে খালি করে দিবে
+        rgSuspects.clearCheck();
     }
 
     private void calculateAndShowResult() {
@@ -116,7 +117,7 @@ public class VotingActivity extends AppCompatActivity {
 
         for (int i = 0; i < totalPlayers; i++) {
             if (voteCounts[i] == maxVotes) {
-                if (playerRoles.get(i).contains("Spy")) {
+                if (playerRoles.get(i).contains("Spy") || playerRoles.get(i).contains("SPY")) {
                     isSpyCaught = true;
                 }
                 highestVotedPlayers.append(playerNames.get(i)).append(", ");
@@ -129,16 +130,16 @@ public class VotingActivity extends AppCompatActivity {
 
         cardVote.setVisibility(View.GONE);
         cardResult.setVisibility(View.VISIBLE);
-        tvRealWord.setText("আসল ওয়ার্ড ছিল:\n" + secretWord);
+        tvRealWord.setText("আসল ওয়ার্ড ছিল:\n" + secretWord);
 
         if (isSpyCaught) {
             tvResultTitle.setText("Victory!");
             tvResultTitle.setTextColor(0xFF4ADE80);
-            tvResultDesc.setText("সাবাশ! স্পাই ধরা পড়েছে।\nসবচেয়ে বেশি ভোট পেয়েছে: " + highestVotedPlayers.toString());
+            tvResultDesc.setText("সাবাশ! স্পাই ধরা পড়েছে।\nসবচেয়ে বেশি ভোট পেয়েছে: " + highestVotedPlayers.toString() + "\n\nআসল স্পাই ছিল: " + actualSpyName);
         } else {
             tvResultTitle.setText("Defeat!");
             tvResultTitle.setTextColor(0xFFF87171);
-            tvResultDesc.setText("ভুল মানুষ! স্পাই জিতে গেছে।\nসবচেয়ে বেশি ভোট পেয়েছে: " + highestVotedPlayers.toString());
+            tvResultDesc.setText("ভুল মানুষ! স্পাই জিতে গেছে।\nসবচেয়ে বেশি ভোট পেয়েছে: " + highestVotedPlayers.toString() + "\n\nআসল স্পাই ছিল: " + actualSpyName);
         }
     }
 }

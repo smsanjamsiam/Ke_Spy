@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -76,6 +78,19 @@ public class GameActivity extends AppCompatActivity {
                     cardReveal.setVisibility(View.GONE);
                     btnNextPlayer.setVisibility(View.GONE);
                     btnGoToVote.setVisibility(View.VISIBLE);
+
+                    Random random = new Random();
+                    int randomIndex = random.nextInt(playerNames.size());
+                    String startingPlayer = playerNames.get(randomIndex);
+
+                    new AlertDialog.Builder(GameActivity.this)
+                            .setTitle("খেলা শুরু!")
+                            .setMessage("প্রথম Hint দিবে: " + startingPlayer + "\n\n" + startingPlayer + ", তুমি Hint দিয়ে খেলা শুরু করো!")
+                            .setPositiveButton("ঠিক আছে", (dialog, which) -> {
+                                dialog.dismiss();
+                            })
+                            .setCancelable(false)
+                            .show();
                 }
             }
         });
@@ -83,10 +98,19 @@ public class GameActivity extends AppCompatActivity {
         btnGoToVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<String> actualSpyNamesList = new ArrayList<>();
+                for (int i = 0; i < playerRoles.size(); i++) {
+                    if (playerRoles.get(i).contains("Spy") || playerRoles.get(i).contains("SPY")) {
+                        actualSpyNamesList.add(playerNames.get(i));
+                    }
+                }
+                String actualSpyName = android.text.TextUtils.join(", ", actualSpyNamesList);
+
                 Intent intent = new Intent(GameActivity.this, VotingActivity.class);
                 intent.putStringArrayListExtra("ROLES", playerRoles);
                 intent.putExtra("SECRET_WORD", secretWord);
                 intent.putStringArrayListExtra("PLAYER_NAMES", playerNames);
+                intent.putExtra("ACTUAL_SPY_NAME", actualSpyName);
                 startActivity(intent);
             }
         });

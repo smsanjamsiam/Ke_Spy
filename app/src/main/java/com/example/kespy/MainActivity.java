@@ -1,6 +1,8 @@
 package com.example.kespy;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
@@ -105,6 +107,10 @@ public class MainActivity extends AppCompatActivity {
         LinearLayout scrollLayout = new LinearLayout(this);
         scrollLayout.setOrientation(LinearLayout.VERTICAL);
 
+        SharedPreferences sharedPreferences = getSharedPreferences("KeSpyPrefs", Context.MODE_PRIVATE);
+        String savedNamesStr = sharedPreferences.getString("SavedNames", "");
+        String[] savedNames = savedNamesStr.isEmpty() ? new String[0] : savedNamesStr.split(",");
+
         ArrayList<EditText> nameInputs = new ArrayList<>();
         for (int i = 0; i < players; i++) {
             EditText input = new EditText(this);
@@ -113,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
             input.setHintTextColor(Color.parseColor("#64748B"));
             input.setPadding(40, 35, 40, 35);
             input.setTextSize(16f);
+
+            if (i < savedNames.length && !savedNames[i].trim().isEmpty() && !savedNames[i].startsWith("Player ")) {
+                input.setText(savedNames[i].trim());
+            }
 
             GradientDrawable inputBg = new GradientDrawable();
             inputBg.setColor(Color.parseColor("#0F172A"));
@@ -178,13 +188,20 @@ public class MainActivity extends AppCompatActivity {
         btnCancel.setOnClickListener(v -> dialog.dismiss());
         btnGo.setOnClickListener(v -> {
             ArrayList<String> playerNames = new ArrayList<>();
+            StringBuilder namesBuilder = new StringBuilder();
+
             for (int i = 0; i < players; i++) {
                 String name = nameInputs.get(i).getText().toString().trim();
                 if (name.isEmpty()) {
                     name = "Player " + (i + 1);
                 }
                 playerNames.add(name);
+                namesBuilder.append(name).append(",");
             }
+
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("SavedNames", namesBuilder.toString());
+            editor.apply();
 
             Intent intent = new Intent(MainActivity.this, GameActivity.class);
             intent.putExtra("PLAYERS", players);
@@ -225,7 +242,6 @@ public class MainActivity extends AppCompatActivity {
         name.setTypeface(null, Typeface.BOLD);
         name.setGravity(Gravity.CENTER);
 
-        // Updated Bio with Ke Spy and other projects
         TextView bio = new TextView(this);
         bio.setText("Computer Science Student & Tutor based in Bangladesh.\nStudying B.Sc. in CSE at BUBT.\nSoftware Developer | Machine Learning & AI Enthusiast.\n\nCreator of:\nAmar Notebook, Scholar Arc, Eco-Waste Locator, Ke Spy and other projects");
         bio.setTextSize(15f);
