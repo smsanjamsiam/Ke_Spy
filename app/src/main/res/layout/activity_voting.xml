@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A">
+
+    <!-- Title Section -->
+    <TextView
+        android:id="@+id/tvVoteTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Who is the Spy?"
+        android:textAlignment="center"
+        android:textColor="#38BDF8"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp" />
+
+    <TextView
+        android:id="@+id/tvVoteSubtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVoteTitle"
+        android:text="Kake shondeho hoy? Select kore vote dao!"
+        android:textAlignment="center"
+        android:textColor="#94A3B8"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp" />
+
+    <!-- Voting Card with Radio Buttons -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardVote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVoteSubtitle"
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="#1E293B"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Suspect:"
+                android:textColor="#F8FAFC"
+                android:textSize="18sp"
+                android:layout_marginBottom="16dp" />
+
+            <RadioGroup
+                android:id="@+id/rgSuspects"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"/>
+
+            <Button
+                android:id="@+id/btnSubmitVote"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="#0EA5E9"
+                android:text="SUBMIT VOTE"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Result Card (Hidden Initially) -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardResult"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvVoteSubtitle"
+        android:layout_margin="30dp"
+        app:cardBackgroundColor="#1E293B"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="20dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="30dp">
+
+            <TextView
+                android:id="@+id/tvResultTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Result!"
+                android:textColor="#F8FAFC"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvResultDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spy dhora poreche!"
+                android:textColor="#4ADE80"
+                android:textSize="20sp"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/tvRealWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Real Word was: Apple"
+                android:textColor="#94A3B8"
+                android:textSize="18sp"
+                android:layout_marginTop="16dp"
+                android:textAlignment="center" />
+
+            <Button
+                android:id="@+id/btnPlayAgain"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginTop="24dp"
+                android:backgroundTint="#10B981"
+                android:text="PLAY AGAIN"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:cornerRadius="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

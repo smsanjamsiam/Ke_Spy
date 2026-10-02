@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A"> <!-- Premium Dark Slate Background -->
+
+    <TextView
+        android:id="@+id/tvPlayerTurn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Player 1"
+        android:textAlignment="center"
+        android:textColor="#38BDF8"
+        android:textSize="36sp"
+        android:textStyle="bold"
+        android:layout_marginTop="60dp"/>
+
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvPlayerTurn"
+        android:text="Card e tap kore nijer role dekho"
+        android:textAlignment="center"
+        android:textColor="#94A3B8"
+        android:textSize="16sp"
+        android:layout_marginTop="8dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardReveal"
+        android:layout_width="match_parent"
+        android:layout_height="350dp"
+        android:layout_below="@id/tvInstruction"
+        android:layout_margin="32dp"
+        app:cardBackgroundColor="#1E293B"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/tvSecretWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TAP HERE"
+                android:textColor="#0EA5E9"
+                android:textSize="42sp"
+                android:textStyle="bold"
+                android:textAlignment="center"/>
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btnNextPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@id/cardReveal"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#0EA5E9"
+        android:text="NEXT PLAYER"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnGoToVote"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_below="@id/cardReveal"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#F43F5E"
+        android:text="VOTE NOW!"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:cornerRadius="16dp"
+        android:visibility="gone"/>
+
+</RelativeLayout>

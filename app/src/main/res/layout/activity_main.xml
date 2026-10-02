@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#0F172A"> <!-- Premium Dark Slate Background -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="32dp"
+        android:gravity="center">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ke Spy?"
+            android:textSize="50sp"
+            android:textStyle="bold"
+            android:textColor="#38BDF8"
+            android:shadowColor="#020617"
+            android:shadowDx="4"
+            android:shadowDy="4"
+            android:shadowRadius="8"
+            android:layout_marginBottom="40dp"/>
+
+        <!-- Total Players Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Total Players:"
+            android:textColor="#94A3B8"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="#1E293B"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:id="@+id/etTotalPlayers"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:paddingHorizontal="20dp"
+                android:inputType="number"
+                android:hint="e.g. 4"
+                android:textColorHint="#64748B"
+                android:textColor="#F8FAFC"
+                android:textSize="18sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Number of Spies Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Number of Spies:"
+            android:textColor="#94A3B8"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="#1E293B"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="20dp">
+
+            <EditText
+                android:id="@+id/etTotalSpies"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/transparent"
+                android:paddingHorizontal="20dp"
+                android:inputType="number"
+                android:hint="e.g. 1"
+                android:textColorHint="#64748B"
+                android:textColor="#F8FAFC"
+                android:textSize="18sp"/>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Category Section -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Select Category:"
+            android:textColor="#94A3B8"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            app:cardBackgroundColor="#1E293B"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="0dp"
+            android:layout_marginBottom="40dp">
+
+            <Spinner
+                android:id="@+id/spinnerCategory"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#38BDF8"
+                android:paddingHorizontal="10dp"
+                android:popupBackground="#1E293B" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Start Game Button -->
+        <Button
+            android:id="@+id/btnStartGame"
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:text="START GAME"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:backgroundTint="#8B5CF6"
+            app:cornerRadius="16dp"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- About Creator -->
+        <TextView
+            android:id="@+id/tvAbout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Creator"
+            android:textColor="#A78BFA"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:padding="10dp"/>
+
+    </LinearLayout>
+</ScrollView>
